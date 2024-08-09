@@ -1,3 +1,3 @@
 <x-layout>
-  <h1>Contact</h1>
+  <h1>Homepage</h1>
 </x-layout>
