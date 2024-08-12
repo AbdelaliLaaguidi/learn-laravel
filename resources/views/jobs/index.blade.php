@@ -2,11 +2,11 @@
   <x-slot:heading>
     Jobs Listing
   </x-slot:heading>
-  <a href="/job/create" class="inline-block mb-6 bg-gray-800 text-white px-8 py-4 rounded-lg hover:bg-gray-500">Create a job</a>
+  <a href="/jobs/create" class="inline-block mb-6 bg-gray-800 text-white px-8 py-4 rounded-lg hover:bg-gray-500">Create a job</a>
   <ul>
     @foreach ($jobs as $job)
       <li>
-        <a href="/job/{{$job['id']}}" class="block px-8 py-4 mb-4 border border-gray-300 rounded-lg hover:bg-gray-200">
+        <a href="/jobs/{{$job['id']}}" class="block px-8 py-4 mb-4 border border-gray-300 rounded-lg hover:bg-gray-200">
           <div class="font-bold text-blue-500">
             {{$job->employer->name}}
           </div>
