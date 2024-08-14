@@ -10,11 +10,6 @@ use App\Http\Controllers\RegisteredUserController;
 Route::view('/', 'home');
 Route::view('/contact', 'contact');
 
-Route::get('/mail-test', function () {
-  Mail::to('Abdelali@example.com')->send(new JobPosted());
-  dd('done');
-});
-
 Route::get('/jobs', [JobController::class, 'index']);
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
 Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
