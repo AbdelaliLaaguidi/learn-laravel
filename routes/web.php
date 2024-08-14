@@ -12,5 +12,9 @@ Route::resource('/jobs', JobController::class);
 
 // Login route
 Route::get('/login', [SessionController::class, 'create']);
+Route::post('/login', [SessionController::class, 'store']);
 // Register route
 Route::get('/register', [RegisteredUserController::class, 'create']);
+Route::post('/register', [RegisteredUserController::class, 'store']);
+
+Route::post('/logout', [SessionController::class, 'destroy']);
