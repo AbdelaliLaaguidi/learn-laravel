@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\JobPosted;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SessionController;
@@ -7,6 +9,11 @@ use App\Http\Controllers\RegisteredUserController;
 
 Route::view('/', 'home');
 Route::view('/contact', 'contact');
+
+Route::get('/mail-test', function () {
+  Mail::to('Abdelali@example.com')->send(new JobPosted());
+  dd('done');
+});
 
 Route::get('/jobs', [JobController::class, 'index']);
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
