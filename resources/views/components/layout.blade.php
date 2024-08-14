@@ -30,17 +30,17 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               @guest
-                  <x-nav-link href="/login" active="{{request()->is('login')}}">Login</x-nav-link>
-                  <x-nav-link href="/register" active="{{request()->is('register')}}">Register</x-nav-link>
-              @endguest
+          <x-nav-link href="/login" active="{{request()->is('login')}}">Login</x-nav-link>
+          <x-nav-link href="/register" active="{{request()->is('register')}}">Register</x-nav-link>
+        @endguest
 
               @auth
-                <p class="text-white text-sm font-medium">{{auth()->user()->first_name}}</p>
-                <form action="/logout" method="POST">
-                  @csrf
-                  <x-form-button>Logout</x-form-button>
-                </form>
-              @endauth
+          <p class="text-white text-sm font-medium">{{auth()->user()->first_name}}</p>
+          <form action="/logout" method="POST">
+          @csrf
+          <x-form-button>Logout</x-form-button>
+          </form>
+        @endauth
             </div>
           </div>
           <div class="-mr-2 flex md:hidden">
@@ -104,7 +104,12 @@
 
     <header class="bg-white shadow">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{$heading}}</h1>
+        <div class="flex justify-between">
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{$heading}}</h1>
+          <a href="/jobs/create"
+            class="inline-block rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">Create
+            a job</a>
+        </div>
       </div>
     </header>
     <main>

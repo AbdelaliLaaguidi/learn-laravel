@@ -8,13 +8,18 @@ use App\Http\Controllers\RegisteredUserController;
 Route::view('/', 'home');
 Route::view('/contact', 'contact');
 
-Route::resource('/jobs', JobController::class);
+Route::get('/jobs', [JobController::class, 'index']);
+Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
+Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
+Route::get('/jobs/{job}', [JobController::class, 'show']);
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware('auth')->can('edit', 'job');
+Route::patch('/jobs/{job}', [JobController::class, 'update'])->middleware('auth')->can('edit', 'job');
+Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->middleware('auth')->can('edit', 'job');;
 
-// Login route
-Route::get('/login', [SessionController::class, 'create']);
-Route::post('/login', [SessionController::class, 'store']);
-// Register route
-Route::get('/register', [RegisteredUserController::class, 'create']);
-Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::get('/login', [SessionController::class, 'create'])->middleware('guest')->name('login');
+Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
-Route::post('/logout', [SessionController::class, 'destroy']);
+Route::get('/register', [RegisteredUserController::class, 'create'])->middleware('guest');
+Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
+
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');

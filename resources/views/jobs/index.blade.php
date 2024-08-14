@@ -2,7 +2,7 @@
   <x-slot:heading>
     Jobs Listing
   </x-slot:heading>
-  <a href="/jobs/create" class="inline-block mb-6 bg-gray-800 text-white px-8 py-4 rounded-lg hover:bg-gray-500">Create a job</a>
+  
   <ul>
     @foreach ($jobs as $job)
       <li>

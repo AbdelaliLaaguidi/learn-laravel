@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
   public function index()
   {
     return view('jobs.index', [
-      'jobs' => Job::with('employer')->latest()->paginate(3),
+      'jobs' => Job::with('employer')->latest('updated_at')->paginate(7)
     ]);
   }
 
