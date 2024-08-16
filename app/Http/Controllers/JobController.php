@@ -10,8 +10,9 @@ class JobController extends Controller
 {
   public function index()
   {
+    $jobs = Job::with('employer')->latest('updated_at')->paginate(7);
     return view('jobs.index', [
-      'jobs' => Job::with('employer')->latest('updated_at')->paginate(7)
+      'jobs' => $jobs,
     ]);
   }
 
@@ -20,12 +21,13 @@ class JobController extends Controller
     return view('jobs.create');
   }
 
-  public function store() {
+  public function store()
+  {
     request()->validate([
       'title' => 'required|min:3',
       'salary' => 'required',
     ]);
-  
+
     $job = Job::create([
       'title' => request('title'),
       'salary' => request('salary'),
